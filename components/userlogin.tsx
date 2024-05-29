@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import { Button, TextInput, ActivityIndicator, Colors } from 'react-native-paper';
+import { Button, TextInput, ActivityIndicator } from 'react-native-paper';
 import axios from 'axios';
 //import * as WebBrowser from 'expo-web-browser';
 import { auth } from '../lib/firebase';
@@ -250,10 +250,12 @@ function UserLogIn({signUpIn, proxyUrl, authUserPassBack, emaillinkerr, backSetE
                 <GoogleAuth authUserPassBack={authUserPassBack} backSetGoogleSigninErr={backSetGoogleSigninErr} initPost={initPost} stopPost={stopPost} />           
                 <Text style={{color: 'red'}}>{googlesigninerr}</Text>
             </View>
+            {/* 
             <View style={styles.listItem}>
                 <FacebookAuth authUserPassBack={authUserPassBack} backSetFacebooksigninerr={backSetFacebooksigninerr} initPost={initPost} stopPost={stopPost} />
                 <Text style={{color: 'red'}}>{facebooksigninerr}</Text>
             </View>
+            */}
             <View style={styles.listItem}>
                 <GithubAuth authUserPassBack={authUserPassBack} backSetGithubsigninerr={backSetGithubsigninerr} initPost={initPost} stopPost={stopPost} />
                 <Text style={{color: 'red'}}>{githubsigninerr}</Text>
@@ -276,7 +278,7 @@ function UserLogIn({signUpIn, proxyUrl, authUserPassBack, emaillinkerr, backSetE
             </View>
             {inPost &&
                 <View style={styles.loading}>
-                    <ActivityIndicator size="large" animating={true} color={Colors.white} />
+                    <ActivityIndicator size="large" animating={true} color={'#ffffff'} />
                 </View>
             }
         </View>

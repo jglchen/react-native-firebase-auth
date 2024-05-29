@@ -11,7 +11,7 @@ import GoogleButton from './googlebutton';
 import { getUserData } from '../lib/utils';
 import { User } from '../lib/types';
 import apiconfig from '../lib/apiconfig';
-import { WEB_CLIENT_ID } from '@env';
+import { WEB_CLIENT_ID, IOS_CLIENT_ID, ANDROID_CLIENT_ID } from '@env';
 const { width } = Dimensions.get("window");
 import { DOMAIN_URL } from '../lib/constants';
 
@@ -27,7 +27,9 @@ interface PropsType {
 export default function GoogleAuth({authUserPassBack, backSetGoogleSigninErr, initPost, stopPost}: PropsType) {
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
     {
-      clientId: WEB_CLIENT_ID,
+      webClientId: WEB_CLIENT_ID || process.env.EXPO_PUBLIC_WEB_CLIENT_ID,
+      iosClientId: IOS_CLIENT_ID || process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
+      androidClientId: ANDROID_CLIENT_ID || process.env.EXPO_PUBLIC_ANDROID_CLIENT_ID,
     },
   );
 

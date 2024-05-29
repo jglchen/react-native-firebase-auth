@@ -25,6 +25,7 @@ interface PropsType {
 //WebBrowser.maybeCompleteAuthSession();
 
 export default function FacebookAuth({authUserPassBack, backSetFacebooksigninerr, initPost, stopPost}: PropsType) {
+    /*
     const [request, response, promptAsync] = Facebook.useAuthRequest({
         responseType: ResponseType.Token,
         clientId: FACEBOOK_APPID,
@@ -70,4 +71,5 @@ export default function FacebookAuth({authUserPassBack, backSetFacebooksigninerr
     return (
         <FacebookButton width={width-10} onPress={() => initFacebookAuth()}>Sign in with Facebook</FacebookButton>
     );
+    */
 }    

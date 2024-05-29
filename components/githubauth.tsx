@@ -28,17 +28,17 @@ interface PropsType {
 const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
   tokenEndpoint: 'https://github.com/login/oauth/access_token',
-  revocationEndpoint: `https://github.com/settings/connections/applications/${GITHUB_CLIENT_ID}`,
+  revocationEndpoint: `https://github.com/settings/connections/applications/${GITHUB_CLIENT_ID || process.env.EXPO_PUBLIC_GITHUB_CLIENT_ID}`,
 };
 
 export default function GithubAuth({authUserPassBack, backSetGithubsigninerr, initPost, stopPost}: PropsType) {
   const [request, response, promptAsync] = useAuthRequest(
     {
-      clientId: `${GITHUB_CLIENT_ID}`,
+      clientId: `${GITHUB_CLIENT_ID || process.env.EXPO_PUBLIC_GITHUB_CLIENT_ID}`,
       //scopes: ['read: user'],
       scopes: ['user: email'],
       redirectUri: makeRedirectUri({
-        scheme: 'firebase-auth'
+        scheme: 'fbauthenticate'
       }),
     },
     discovery
@@ -55,8 +55,8 @@ export default function GithubAuth({authUserPassBack, backSetGithubsigninerr, in
   async function createTokenWithGitHubCode(code: string) {
     const url =
       `https://github.com/login/oauth/access_token` +
-      `?client_id=${GITHUB_CLIENT_ID}` +
-      `&client_secret=${GITHUB_CLIENT_SECRET}` +
+      `?client_id=${GITHUB_CLIENT_ID || process.env.EXPO_PUBLIC_GITHUB_CLIENT_ID}` +
+      `&client_secret=${GITHUB_CLIENT_SECRET || process.env.EXPO_PUBLIC_GITHUB_CLIENT_SECRET}` +
       `&code=${code}`;
     
     const res = await fetch(url, {

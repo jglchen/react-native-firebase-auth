@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import axios from 'axios';
 import { View, Text } from 'react-native';
-import { Button, TextInput, ActivityIndicator, Colors } from 'react-native-paper';
+import { Button, TextInput, ActivityIndicator } from 'react-native-paper';
 import { auth } from '../lib/firebase';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { styles } from '../styles/css';
@@ -174,7 +174,7 @@ function UserSignUp({signUpIn, proxyUrl}: PropsType){
             </View>
             {inPost &&
                 <View style={styles.loading}>
-                    <ActivityIndicator size="large" animating={true} color={Colors.white} />
+                    <ActivityIndicator size="large" animating={true} color={'#ffffff'} />
                 </View>
             }
         </View>
